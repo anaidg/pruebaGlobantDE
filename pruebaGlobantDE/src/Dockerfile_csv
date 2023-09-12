@@ -1,0 +1,15 @@
+FROM python:3.8-slim
+# Crea un directorio de trabajo en el contenedor
+WORKDIR /home/molina/Documents/PruebaGlobantDE/pruebaGlobantDE/Rest/app
+
+# Instala las dependencias necesarias
+RUN pip install fastapi uvicorn
+
+# Copia tu aplicación FastAPI al contenedor
+COPY app.py /home/molina/Documents/PruebaGlobantDE/pruebaGlobantDE/Rest/app
+
+# Expón el puerto en el que se ejecutará tu aplicación FastAPI
+EXPOSE 8000
+
+# Comando para ejecutar la aplicación FastAPI
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,0 +1,15 @@
+FROM mysql:latest
+
+ENV MYSQL_ROOT_PASSWORD=admin
+ENV MYSQL_DATABASE=stage
+ENV MYSQL_USER=user
+ENV MYSQL_PASSWORD=user2023
+
+
+# Copy SQL files into the image
+COPY ./init-db.sql /docker-entrypoint-initdb.d/
+
+# Expose the MySQL port
+EXPOSE 3306
+
+
